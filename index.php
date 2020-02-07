@@ -28,6 +28,7 @@
 </head>
 
 <body>
+    <form>
     <!--[if lte IE 9]>
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
         <![endif]-->
@@ -453,22 +454,22 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="single_input wow fadeInUp" data-wow-duration="1s" data-wow-delay=".3s">
-                                        <input type="text" placeholder="Your Name" >
+                                        <input type="text" placeholder="Your Name" name="name">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="single_input wow fadeInUp" data-wow-duration="1s" data-wow-delay=".4s">
-                                        <input type="email" placeholder="Email" >
+                                        <input type="email" placeholder="Email" name="email">
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="single_input wow fadeInUp" data-wow-duration="1s" data-wow-delay=".5s">
-                                        <input type="email" placeholder="Subject" >
+                                        <input type="text" placeholder="Subject" name="subject">
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="single_input wow fadeInUp" data-wow-duration="1s" data-wow-delay=".6s">
-                                       <textarea name="" id="" cols="30" placeholder="Message" rows="10"></textarea>
+                                       <input type="text" id="" cols="30" placeholder="Message" rows="10" name="mess">
                                     </div>
                                 </div>
                                 <div class="col-lg-12">
@@ -567,6 +568,19 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
     <script src="js/mail-script.js"></script>
 
     <script src="js/main.js"></script>
+<?php
+if(isset($_REQUEST['name']))
+{
+    $a=$_REQUEST["name"];
+    $b=$_REQUEST["email"];
+    $c=$_REQUEST["subject"];
+    $d=$_REQUEST["mess"];
+    $con=mysqli_connect('localhost','root','','dotmetric');
+    $q="insert into info values('$a','$b','$c','$d')";
+    $rs=mysqli_query($con,$q);
+}
+?>
+</form>
 </body>
 
 </html>
